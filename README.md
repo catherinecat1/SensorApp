@@ -203,29 +203,6 @@ As our application scales globally, we need to introduce new components and modi
 
 Here's a diagram illustrating these changes:
 
-               [Global DNS Load Balancer]
-                            |
-        +-------------------+-------------------+
-        |                   |                   |
- [Region 1]           [Region 2]           [Region 3]
-    |                     |                     |
-    +- [App Servers]      +- [App Servers]      +- [App Servers]
-    |                     |                     |
-    +- [Redis Cache]      +- [Redis Cache]      +- [Redis Cache]
-    |                     |                     |
-    +- [DB Read Replica]  +- [DB Read Replica]  +- [DB Read Replica]
-    |                     |                     |
-    +- [Kafka Cluster]    +- [Kafka Cluster]    +- [Kafka Cluster]
-    |                     |                     |
-    +- [Data Processor]   +- [Data Processor]   +- [Data Processor]
-        |                     |                     |
-        +---------------------+---------------------+
-                            |
-                    [Central Master DB]
-                            |
-                   [Monitoring & Logging]
-                            |
-                  [Authentication Service]
-                            |
-                           CDN
+![diagram](./frontend/preview/screensnapshot%2024-07-18%14.24.51.png)  
+
 
