@@ -6,7 +6,7 @@ This application is designed to collect, store, and analyze sensor data from IoT
 
 ## Architecture
 
-The application follows a microservices architecture:
+The application follows an architecture -
 
 - Backend: Node.js with Express.js
 - Database: PostgreSQL for persistent storage
@@ -52,8 +52,6 @@ Our solution implements a two-tier authentication system:
    - The server verifies these credentials against the `iot_devices` table in the database.
    - The `secret_key` is stored as a hashed value in the database for security.
    - This is a just a simple mock up for IoT Device Authentication. In real implementation, IoT developers and administrators usually register each device and deploy each one with public key infrastructure (PKI) that is linked to public key certificates for device authentication. PKI helps the IoT network to establish the legitimacy of a device in a network. However, every device should be able to verify the source of information in a system consisting of thousands of devices that are sending large volumes of data in milliseconds. So it is essential to have a trusted platform that can automatically handle device identity verification.
-
-This dual approach ensures that both human users (through the frontend) and IoT devices can securely interact with our system, with appropriate access controls for each type of entity.
 
 ## API Endpoints
 
@@ -141,7 +139,7 @@ Test Results for 5000 Concurrent Requests:
    - ECONNRESET: 28,948
 - Response Time Metrics: Mean (341.6ms) Median (301.9ms) p95 (1130.6ms)
 
-Test Results for 5000 Concurrent Requests:
+Test Results for 10000 Concurrent Requests:
 - Total Requests: 600,486
 - Total Responses: 19,294
 - Successful Responses: 19,294 (7.0%)
@@ -165,12 +163,10 @@ Next Step:
 6. Implement circuit breakers to fail fast and prevent cascading failures under high load.
 7. Upgrade hardware resources (CPU, RAM, Network) to handle higher concurrency.
 
-Conclusion:
-Significant architectural changes and optimizations are required to achieve the desired performance levels. A redesign of the data ingestion and processing pipeline is necessary to meet these scalability requirements.
 
 ## Global Scaling Solution
 
-As our application scales globally, we need to introduce new components and modify our architecture to ensure high availability, low latency, and consistency across regions. Here are the proposed changes:
+As our application scales globally, we need to modify our architecture to ensure high availability, low latency, and consistency across regions. Here are the changes:
 
 1. Global Load Balancer:
    - Implement a global DNS-based load balancer to direct traffic to the nearest regional deployment.
@@ -190,16 +186,19 @@ As our application scales globally, we need to introduce new components and modi
 
 5. Data Processing Layer:
    - Implement a separate data processing layer to consume messages from the queue and write to the database.
-   - This separation allows for independent scaling of the data ingestion and data processing components.
+   - This allows for independent scaling of the data ingestion and data processing components.
 
 6. Content Delivery Network (CDN):
-   - Utilize a CDN to serve static assets and potentially cache some API responses globally.
+   - Utilize a CDN to serve static assets and cache some API responses globally.
 
 7. Monitoring and Logging:
    - Implement a global monitoring and logging solution to maintain visibility across all regional deployments.
 
 8. Authentication Service:
    - Create a dedicated authentication service to handle user and device authentication across all regions.
+
+9. Internationalization and localization
+   - Adapting the front-end application to support multiple languages and regions.
 
 Here's a diagram illustrating these changes:
 
