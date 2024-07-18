@@ -1,0 +1,16 @@
+{
+    "dev": {
+      "driver": "pg",
+      "host": "localhost",
+      "database": "sensor_data",
+      "user": "your_username",
+      "password": "your_password"
+    },
+    "prod": {
+      "driver": "pg",
+      "host": "your_production_host",
+      "database": "sensor_data",
+      "user": "your_production_username",
+      "password": "your_production_password"
+    }
+  }

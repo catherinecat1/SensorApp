@@ -1,0 +1,24 @@
+config:
+  target: "http://localhost:3000"  
+  phases:
+    - duration: 60
+      arrivalRate: 500
+
+  payload:
+    path: "devices.csv"
+    fields:
+      - "equipmentId"
+      - "secretKey"
+
+scenarios:
+  - name: "Send sensor data"
+    flow:
+      - post:
+          url: "/api/sensor-data"
+          headers:
+            Content-Type: "application/json"
+            x-secret-key: "{{ secretKey }}"
+          json:
+            equipment_id: "{{ equipmentId }}"
+            timestamp: "{{ $isoTimestamp }}"
+            value: "{{ $randomNumber(0, 100) }}"
