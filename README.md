@@ -203,6 +203,6 @@ As our application scales globally, we need to introduce new components and modi
 
 Here's a diagram illustrating these changes:
 
-![diagram](./frontend/preview/screensnapshot%2024-07-18%14.24.51.png)  
+![diagram](./frontend/preview/screensnapshot%202024-07-18%2014.24.51.png)  
 
 
